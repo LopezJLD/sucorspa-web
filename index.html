@@ -97,17 +97,6 @@
         .about-image { flex: 1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .about-image img { width: 100%; height: auto; display: block; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .card-img { height: 220px; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; }
-        .card-content { padding: 25px; }
-        .card-btn {
-            background-color: var(--primary); color: white; padding: 10px 20px; border: none; border-radius: 4px;
-            cursor: pointer; font-weight: 600; display: inline-block; text-decoration: none; text-align: center; width: 100%;
-        }
-        .card-btn:hover { background-color: var(--primary-dark); }
-        
         .gallery { background-color: var(--light-gray); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .gallery-item { border-radius: 8px; overflow: hidden; height: 250px; }
@@ -218,7 +207,6 @@
                 <ul id="mainNav">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#equipos">Equipos</a></li>
                     <li><a href="#galeria">Galería</a></li>
                     <li><a href="#garantia">Garantía</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -256,43 +244,10 @@
         </div>
     </section>
 
-    <section class="section" id="equipos">
-        <div class="container">
-            <div class="section-title"><h2>Equipos en Arriendo</h2></div>
-            <p class="section-subtitle">Contamos con una amplia variedad de maquinarias y equipos para todo tipo de proyectos de construcción.</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-img"><img src="maquinaria.jpg" alt="Excavadora"></div>
-                    <div class="card-content">
-                        <h3>Excavadoras</h3>
-                        <p>Excavadoras de diferentes capacidades para movimiento de tierra, demolición y trabajos pesados.</p>
-                        <a href="#contacto" class="card-btn">Solicitar Información</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img"><img src="maquinaria2.jpg" alt="Retroexcavadora"></div>
-                    <div class="card-content">
-                        <h3>Retroexcavadoras</h3>
-                        <p>Ideales para trabajos de excavación, carga y movimiento de materiales en espacios reducidos.</p>
-                        <a href="#contacto" class="card-btn">Solicitar Información</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img"><img src="maquinaria3.jpg" alt="Grúa"></div>
-                    <div class="card-content">
-                        <h3>Grúas Hidráulicas</h3>
-                        <p>Grúas de diferentes capacidades de elevación para trabajos de altura y manipulación de cargas.</p>
-                        <a href="#contacto" class="card-btn">Solicitar Información</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section gallery" id="galeria">
         <div class="container">
             <div class="section-title"><h2>Galería de Equipos</h2></div>
-            <p class="section-subtitle">Conozca nuestra flota de equipos disponibles para arriendo.</p>
+            <p class="section-subtitle">Contamos con una amplia variedad de maquinarias y equipos para todo tipo de proyectos de construcción.</p>
             <div class="gallery-grid">
                 <div class="gallery-item"><img src="maquinaria.jpg" alt="Excavadora"></div>
                 <div class="gallery-item"><img src="maquinaria2.jpg" alt="Retroexcavadora"></div>
