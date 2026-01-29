@@ -48,8 +48,8 @@
             font-weight: 600; 
             font-size: 15px; 
             color: white;
-            margin-left: auto; /* Empuja el número a la derecha */
-            margin-right: 20px; /* Espacio desde el borde derecho */
+            margin-left: auto;
+            margin-right: 20px;
         }
         .header-contact-info i { 
             color: var(--primary); 
@@ -66,7 +66,7 @@
             color: white; 
             font-size: 24px; 
             cursor: pointer; 
-            margin-left: auto; /* Asegura que esté a la derecha */
+            margin-left: auto;
         }
         
         .hero {
@@ -114,17 +114,21 @@
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); }
         .form-group input, .form-group textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Open Sans', sans-serif; }
+        .optional-text { color: var(--gray); font-weight: normal; font-size: 0.9em; margin-left: 5px; }
         .contact-info-items { display: flex; flex-direction: column; gap: 25px; margin-bottom: 30px; }
         .contact-info-item { display: flex; align-items: flex-start; }
         .contact-info-item i { color: var(--primary); font-size: 22px; margin-right: 15px; margin-top: 5px; }
         .contact-info-item-content h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary); }
         .contact-info-item-content p { color: var(--gray); line-height: 1.5; }
+        .contact-link { color: var(--gray); text-decoration: none; transition: color 0.3s ease; }
+        .contact-link:hover { color: var(--primary); text-decoration: underline; }
         .social-links { display: flex; gap: 15px; margin-top: 30px; justify-content: center; }
         .social-links a {
             display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
             background-color: rgba(255,87,34,0.1); border-radius: 50%; color: var(--primary); text-decoration: none;
+            transition: all 0.3s ease;
         }
-        .social-links a:hover { background-color: var(--primary); color: white; }
+        .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
         
         footer { background-color: var(--secondary); color: white; padding: 60px 0 30px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
@@ -140,9 +144,12 @@
         .footer-social-links a {
             display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
             background-color: rgba(255,255,255,0.1); border-radius: 50%; color: white; text-decoration: none;
+            transition: all 0.3s ease;
         }
-        .footer-social-links a:hover { background-color: var(--primary); }
+        .footer-social-links a:hover { background-color: var(--primary); transform: translateY(-3px); }
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; }
+        .footer-link { color: white; text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--primary); text-decoration: underline; }
         
         @media (max-width: 992px) {
             nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary); flex-direction: column; padding: 20px 0; }
@@ -151,7 +158,7 @@
             nav ul li a { display: block; padding: 15px 20px; }
             .mobile-menu-btn { 
                 display: block; 
-                order: 2; /* Cambiado el orden */
+                order: 2;
             }
             .logo-img { max-height: 75px; max-width: 200px; }
             .hero h1 { font-size: 2.5rem; }
@@ -172,8 +179,8 @@
                 padding-top: 8px; 
                 border-top: 1px solid rgba(255,255,255,0.15); 
                 color: white;
-                margin-left: 0; /* Reset para móvil */
-                margin-right: 0; /* Reset para móvil */
+                margin-left: 0;
+                margin-right: 0;
             }
             .header-contact-info span { color: white; }
             nav {
@@ -214,7 +221,7 @@
             </nav>
             <div class="header-contact-info">
                 <i class="fas fa-phone-alt"></i>
-                <span>+56 9 8437 0799</span>
+                <span><a href="tel:+56984370799" style="color: white; text-decoration: none;">+56 9 8437 0799</a></span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
         </div>
@@ -280,11 +287,23 @@
             <div class="contact-container">
                 <div class="contact-form">
                     <form id="contactForm" action="https://formspree.io/f/xkobrjze" method="POST">
-                        <div class="form-group"><label for="nombre">Tu nombre *</label><input type="text" id="nombre" name="nombre" required></div>
-                        <div class="form-group"><label for="correo">Tu correo electrónico *</label><input type="email" id="correo" name="correo" required></div>
-                        <div class="form-group"><label for="telefono">Tu teléfono</label><input type="tel" id="telefono" name="telefono"></div>
-                        <div class="form-group"><label for="asunto">Asunto</label><input type="text" id="asunto" name="asunto" value="Consulta desde sitio web Sucor SpA"></div>
-                        <div class="form-group"><label for="mensaje">Tu mensaje *</label><textarea id="mensaje" name="mensaje" rows="5" required></textarea></div>
+                        <div class="form-group">
+                            <label for="nombre">Tu nombre *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Tu correo electrónico *</label>
+                            <input type="email" id="correo" name="correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Tu teléfono <span class="optional-text">(Opcional)</span></label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <input type="hidden" id="asunto" name="asunto" value="Consulta desde sitio web Sucor SpA">
+                        <div class="form-group">
+                            <label for="mensaje">Tu mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
                         <input type="hidden" name="_subject" value="Nuevo mensaje desde Sucor SpA">
                         <input type="hidden" name="_replyto" id="_replyto">
                         <button type="submit" class="btn-primary">Enviar Mensaje</button>
@@ -292,25 +311,44 @@
                 </div>
                 <div class="contact-info">
                     <div class="contact-info-items">
-                        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
                             <div class="contact-info-item-content">
                                 <h3>Dirección</h3>
-                                <p>Oscar Castro 01413, Illapel, Chile</p>
+                                <p>
+                                    <a href="https://maps.app.goo.gl/KQEemvMouWJrithe8" target="_blank" class="contact-link">
+                                        Oscar Castro 01413, Illapel, Chile
+                                    </a>
+                                </p>
                             </div>
                         </div>
-                        <div class="contact-info-item"><i class="fas fa-phone-alt"></i>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
                             <div class="contact-info-item-content">
                                 <h3>Teléfono</h3>
-                                <p>+56 9 8437 0799</p>
+                                <p>
+                                    <a href="tel:+56984370799" class="contact-link">
+                                        +56 9 8437 0799
+                                    </a>
+                                </p>
                             </div>
                         </div>
-                        <div class="contact-info-item"><i class="fas fa-envelope"></i>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
                             <div class="contact-info-item-content">
                                 <h3>Correo Electrónico</h3>
-                                <p>pedrosuazobarraza@sucor.cl<br>pablacortesdiaz@sucor.cl</p>
+                                <p>
+                                    <a href="mailto:pedrosuazobarraza@sucor.cl" class="contact-link">
+                                        pedrosuazobarraza@sucor.cl
+                                    </a><br>
+                                    <a href="mailto:pablacortesdiaz@sucor.cl" class="contact-link">
+                                        pablacortesdiaz@sucor.cl
+                                    </a>
+                                </p>
                             </div>
                         </div>
-                        <div class="contact-info-item"><i class="fas fa-clock"></i>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
                             <div class="contact-info-item-content">
                                 <h3>Horario de Atención</h3>
                                 <p>Lunes a Viernes: 8:00 - 19:00 hrs<br>Sábados: 9:00 - 14:00 hrs</p>
@@ -320,8 +358,10 @@
                 </div>
             </div>
             <div class="social-links" style="margin-top: 40px;">
-                <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61557793637860" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/56984370799" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </section>
@@ -332,6 +372,50 @@
                 <div class="footer-logo-container">
                     <img src="logo.png" alt="Sucor SpA Logo" class="footer-logo-img">
                     <p>Líderes en arriendo de maquinaria y equipos para construcción en la región de Coquimbo. Ofrecemos soluciones integrales con equipos de alta calidad y tecnología de vanguardia.</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>
+                                    <a href="https://maps.app.goo.gl/KQEemvMouWJrithe8" target="_blank" class="footer-link">
+                                        Oscar Castro 01413, Illapel, Chile
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <p>
+                                    <a href="tel:+56984370799" class="footer-link">
+                                        +56 9 8437 0799
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p>
+                                    <a href="mailto:pedrosuazobarraza@sucor.cl" class="footer-link">
+                                        pedrosuazobarraza@sucor.cl
+                                    </a><br>
+                                    <a href="mailto:pablacortesdiaz@sucor.cl" class="footer-link">
+                                        pablacortesdiaz@sucor.cl
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61557793637860" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/56984370799" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="copyright"><p>&copy; 2026 Sucor SpA. Todos los derechos reservados.</p></div>
