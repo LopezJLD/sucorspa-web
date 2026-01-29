@@ -37,22 +37,30 @@
             font-weight: 500; transition: all 0.3s ease; font-size: 15px;
         }
         nav ul li a:hover { color: var(--primary); }
-        .contact-info { 
+        .header-contact-info { 
             display: flex; 
             align-items: center; 
             font-weight: 600; 
             font-size: 15px; 
-            color: white; /* AÑADIDO: Color blanco para el texto */
+            color: white;
         }
-        .contact-info i { 
+        .header-contact-info i { 
             color: var(--primary); 
             margin-right: 8px; 
             font-size: 18px; 
         }
-        .contact-info span { 
-            color: white; /* AÑADIDO: Color blanco específico para el número */
+        .header-contact-info span { 
+            color: white;
         }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+        .mobile-menu-btn { 
+            display: none; 
+            background: none; 
+            border: none; 
+            color: white; 
+            font-size: 24px; 
+            cursor: pointer; 
+            margin-left: auto; /* Añadido para moverlo a la derecha */
+        }
         
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
@@ -113,6 +121,8 @@
         .contact-info-items { display: flex; flex-direction: column; gap: 25px; margin-bottom: 30px; }
         .contact-info-item { display: flex; align-items: flex-start; }
         .contact-info-item i { color: var(--primary); font-size: 22px; margin-right: 15px; margin-top: 5px; }
+        .contact-info-item-content h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary); }
+        .contact-info-item-content p { color: var(--gray); line-height: 1.5; }
         .social-links { display: flex; gap: 15px; margin-top: 30px; justify-content: center; }
         .social-links a {
             display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
@@ -143,21 +153,36 @@
             nav ul.active { display: flex; }
             nav ul li { text-align: center; }
             nav ul li a { display: block; padding: 15px 20px; }
-            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn { 
+                display: block; 
+                margin-left: auto; /* Asegura que esté pegado a la derecha */
+                order: 2; /* Cambiado para posicionarlo mejor */
+            }
             .logo-img { max-height: 75px; max-width: 200px; }
             .hero h1 { font-size: 2.5rem; }
             .about-content { flex-direction: column; }
-            .header-container { flex-wrap: wrap; }
-            .contact-info { 
+            .header-container { 
+                flex-wrap: wrap; 
+                position: relative;
+            }
+            .logo-container {
+                order: 1;
+                flex: 1;
+            }
+            .header-contact-info { 
                 order: 3; 
                 flex: 0 0 100%; 
                 justify-content: center; 
                 margin-top: 8px; 
                 padding-top: 8px; 
                 border-top: 1px solid rgba(255,255,255,0.15); 
-                color: white; /* MANTENIDO para móvil */
+                color: white;
             }
-            .contact-info span { color: white; } /* MANTENIDO para móvil */
+            .header-contact-info span { color: white; }
+            nav {
+                order: 4;
+                width: 100%;
+            }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
@@ -169,6 +194,9 @@
             .hero h1 { font-size: 1.8rem; }
             .btn-primary { padding: 14px 30px; font-size: 1rem; }
             .logo-img { max-height: 70px; max-width: 180px; }
+            .mobile-menu-btn {
+                margin-left: auto; /* Asegura que esté pegado a la derecha en móviles pequeños */
+            }
         }
     </style>
 </head>
@@ -177,6 +205,10 @@
         <div class="container header-container">
             <div class="logo-container">
                 <img src="logo.png" alt="Sucor SpA Logo" class="logo-img">
+            </div>
+            <div class="header-contact-info">
+                <i class="fas fa-phone-alt"></i>
+                <span>+56 9 8437 0799</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <nav>
@@ -189,10 +221,6 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
-            <div class="contact-info">
-                <i class="fas fa-phone-alt"></i>
-                <span>+56 9 8437 0799</span>
-            </div>
         </div>
     </header>
 
@@ -301,10 +329,30 @@
                 </div>
                 <div class="contact-info">
                     <div class="contact-info-items">
-                        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><h3>Dirección</h3><p>Oscar Castro 01413, Illapel, Chile</p></div></div>
-                        <div class="contact-info-item"><i class="fas fa-phone-alt"></i><div><h3>Teléfono</h3><p>+56 9 8437 0799</p></div></div>
-                        <div class="contact-info-item"><i class="fas fa-envelope"></i><div><h3>Correo Electrónico</h3><p>contacto@sucorspa.cl</p></div></div>
-                        <div class="contact-info-item"><i class="fas fa-clock"></i><div><h3>Horario de Atención</h3><p>Lunes a Viernes: 8:00 - 19:00 hrs<br>Sábados: 9:00 - 14:00 hrs</p></div></div>
+                        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-info-item-content">
+                                <h3>Dirección</h3>
+                                <p>Oscar Castro 01413, Illapel, Chile</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item"><i class="fas fa-phone-alt"></i>
+                            <div class="contact-info-item-content">
+                                <h3>Teléfono</h3>
+                                <p>+56 9 8437 0799</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item"><i class="fas fa-envelope"></i>
+                            <div class="contact-info-item-content">
+                                <h3>Correo Electrónico</h3>
+                                <p>pedrosuazobarraza@sucor.cl<br>pablacortesdiaz@sucor.cl</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item"><i class="fas fa-clock"></i>
+                            <div class="contact-info-item-content">
+                                <h3>Horario de Atención</h3>
+                                <p>Lunes a Viernes: 8:00 - 19:00 hrs<br>Sábados: 9:00 - 14:00 hrs</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
