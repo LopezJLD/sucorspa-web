@@ -28,7 +28,12 @@
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative;
+        }
         .logo-img { max-height: 70px; width: auto; max-width: 220px; }
         nav ul { list-style: none; display: flex; }
         nav ul li { margin: 0 5px; }
@@ -43,6 +48,8 @@
             font-weight: 600; 
             font-size: 15px; 
             color: white;
+            margin-left: auto; /* Empuja el número a la derecha */
+            margin-right: 20px; /* Espacio desde el borde derecho */
         }
         .header-contact-info i { 
             color: var(--primary); 
@@ -59,7 +66,7 @@
             color: white; 
             font-size: 24px; 
             cursor: pointer; 
-            margin-left: auto; /* Añadido para moverlo a la derecha */
+            margin-left: auto; /* Asegura que esté a la derecha */
         }
         
         .hero {
@@ -155,8 +162,7 @@
             nav ul li a { display: block; padding: 15px 20px; }
             .mobile-menu-btn { 
                 display: block; 
-                margin-left: auto; /* Asegura que esté pegado a la derecha */
-                order: 2; /* Cambiado para posicionarlo mejor */
+                order: 2; /* Cambiado el orden */
             }
             .logo-img { max-height: 75px; max-width: 200px; }
             .hero h1 { font-size: 2.5rem; }
@@ -177,6 +183,8 @@
                 padding-top: 8px; 
                 border-top: 1px solid rgba(255,255,255,0.15); 
                 color: white;
+                margin-left: 0; /* Reset para móvil */
+                margin-right: 0; /* Reset para móvil */
             }
             .header-contact-info span { color: white; }
             nav {
@@ -195,7 +203,7 @@
             .btn-primary { padding: 14px 30px; font-size: 1rem; }
             .logo-img { max-height: 70px; max-width: 180px; }
             .mobile-menu-btn {
-                margin-left: auto; /* Asegura que esté pegado a la derecha en móviles pequeños */
+                order: 2;
             }
         }
     </style>
@@ -206,11 +214,6 @@
             <div class="logo-container">
                 <img src="logo.png" alt="Sucor SpA Logo" class="logo-img">
             </div>
-            <div class="header-contact-info">
-                <i class="fas fa-phone-alt"></i>
-                <span>+56 9 8437 0799</span>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul id="mainNav">
                     <li><a href="#home">Inicio</a></li>
@@ -221,6 +224,11 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
+            <div class="header-contact-info">
+                <i class="fas fa-phone-alt"></i>
+                <span>+56 9 8437 0799</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
