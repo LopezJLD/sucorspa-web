@@ -120,15 +120,37 @@
         .contact-info-item i { color: var(--primary); font-size: 22px; margin-right: 15px; margin-top: 5px; }
         .contact-info-item-content h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary); }
         .contact-info-item-content p { color: var(--gray); line-height: 1.5; }
-        .contact-link { color: var(--gray); text-decoration: none; transition: color 0.3s ease; }
-        .contact-link:hover { color: var(--primary); text-decoration: underline; }
-        .social-links { display: flex; gap: 15px; margin-top: 30px; justify-content: center; }
-        .social-links a {
-            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-            background-color: rgba(255,87,34,0.1); border-radius: 50%; color: var(--primary); text-decoration: none;
-            transition: all 0.3s ease;
+        .contact-link { 
+            color: var(--primary); 
+            text-decoration: underline; 
+            transition: color 0.3s ease; 
+            font-weight: 500;
         }
-        .social-links a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
+        .contact-link:hover { color: var(--primary-dark); }
+        .social-links { 
+            display: flex; 
+            gap: 25px; 
+            margin-top: 30px; 
+            justify-content: center; 
+        }
+        .social-links a {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 55px; 
+            height: 55px;
+            background-color: rgba(255,87,34,0.1); 
+            border-radius: 50%; 
+            color: var(--primary); 
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+        .social-links a:hover { 
+            background-color: var(--primary); 
+            color: white; 
+            transform: translateY(-3px); 
+        }
         
         footer { background-color: var(--secondary); color: white; padding: 60px 0 30px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
@@ -140,16 +162,36 @@
         .footer-contact-items { display: flex; flex-direction: column; gap: 15px; }
         .footer-contact-item { display: flex; align-items: flex-start; }
         .footer-contact-item i { color: var(--primary); margin-right: 10px; font-size: 18px; }
-        .footer-social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .footer-social-links a {
-            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-            background-color: rgba(255,255,255,0.1); border-radius: 50%; color: white; text-decoration: none;
-            transition: all 0.3s ease;
+        .footer-social-links { 
+            display: flex; 
+            gap: 25px; 
+            margin-top: 20px; 
         }
-        .footer-social-links a:hover { background-color: var(--primary); transform: translateY(-3px); }
+        .footer-social-links a {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 55px; 
+            height: 55px;
+            background-color: rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            color: white; 
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+        .footer-social-links a:hover { 
+            background-color: var(--primary); 
+            transform: translateY(-3px); 
+        }
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; }
-        .footer-link { color: white; text-decoration: none; transition: color 0.3s ease; }
-        .footer-link:hover { color: var(--primary); text-decoration: underline; }
+        .footer-link { 
+            color: var(--primary); 
+            text-decoration: underline; 
+            transition: color 0.3s ease; 
+            font-weight: 500;
+        }
+        .footer-link:hover { color: #ff8a65; }
         
         @media (max-width: 992px) {
             nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary); flex-direction: column; padding: 20px 0; }
@@ -187,12 +229,24 @@
                 order: 4;
                 width: 100%;
             }
+            .social-links a,
+            .footer-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .section-title h2 { font-size: 2rem; }
             .hero { padding: 150px 20px 80px; }
             .section { padding: 60px 0; }
+            .social-links a,
+            .footer-social-links a {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
         }
         @media (max-width: 576px) {
             .hero h1 { font-size: 1.8rem; }
@@ -200,6 +254,15 @@
             .logo-img { max-height: 70px; max-width: 180px; }
             .mobile-menu-btn {
                 order: 2;
+            }
+            .social-links {
+                gap: 20px;
+            }
+            .social-links a,
+            .footer-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
             }
         }
     </style>
@@ -221,7 +284,7 @@
             </nav>
             <div class="header-contact-info">
                 <i class="fas fa-phone-alt"></i>
-                <span><a href="tel:+56984370799" style="color: white; text-decoration: none;">+56 9 8437 0799</a></span>
+                <span>+56 9 8437 0799</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
         </div>
@@ -358,9 +421,7 @@
                 </div>
             </div>
             <div class="social-links" style="margin-top: 40px;">
-                <a href="https://www.facebook.com/profile.php?id=61557793637860" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://wa.me/56984370799" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
@@ -411,9 +472,7 @@
                         </div>
                     </div>
                     <div class="footer-social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61557793637860" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://wa.me/56984370799" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
