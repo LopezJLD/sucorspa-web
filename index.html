@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* variables de colores y fuentes */
         :root {
             --primary: #ff5722;
             --primary-dark: #d84315;
@@ -18,13 +17,11 @@
             --form-bg: #f0f0f0;
         }
         
-        /* reset y estilos base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--secondary); margin-bottom: 1rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* encabezado con navegación */
         header {
             background-color: rgba(44, 62, 80, 0.95);
             padding: 15px 0;
@@ -41,7 +38,6 @@
         }
         .logo-img { max-height: 70px; width: auto; max-width: 220px; }
         
-        /* navegación principal */
         nav ul { list-style: none; display: flex; }
         nav ul li { margin: 0 5px; }
         nav ul li a {
@@ -50,7 +46,6 @@
         }
         nav ul li a:hover { color: var(--primary); }
         
-        /* información de contacto en el header */
         .header-contact-info { 
             display: flex; 
             align-items: center; 
@@ -66,7 +61,6 @@
             font-size: 18px; 
         }
         
-        /* botón del menú móvil */
         .mobile-menu-btn { 
             display: none; 
             background: none; 
@@ -77,7 +71,6 @@
             margin-left: auto;
         }
         
-        /* sección hero principal */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center; color: white; text-align: center;
@@ -86,7 +79,6 @@
         .hero h1 { font-size: 3.2rem; color: white; margin-bottom: 25px; }
         .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 35px; opacity: 0.9; }
         
-        /* botón principal */
         .btn-primary {
             background-color: var(--primary); color: white; padding: 16px 35px; border: none; border-radius: 4px;
             text-decoration: none; font-weight: 600; font-size: 1.1rem; display: inline-block;
@@ -94,7 +86,6 @@
         }
         .btn-primary:hover { background-color: var(--primary-dark); }
         
-        /* estilos generales de secciones */
         .section { padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 50px; }
         .section-title h2 { font-size: 2.5rem; display: inline-block; padding-bottom: 15px; position: relative; }
@@ -104,50 +95,122 @@
         }
         .section-subtitle { text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--gray); }
         
-        /* sección nosotros */
         .about-content { display: flex; align-items: center; gap: 50px; }
         .about-text { flex: 1; }
         .about-image { flex: 1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .about-image img { width: 100%; height: auto; display: block; }
         
-        /* nueva galería de equipos organizada - tarjetas más compactas */
-        .gallery { background-color: var(--light-gray); }
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+        /* Nuevo diseño: carrusel a la derecha y categorías a la izquierda */
+        .gallery-content {
+            display: flex;
+            gap: 40px;
             margin-top: 40px;
         }
         
-        /* Estilos para las tarjetas de categorías con imágenes - más compactas */
+        .categories-sidebar {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+        }
+        
+        .slider-sidebar {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        /* Estilos para el carrusel de imágenes - MÁS PEQUEÑO EN WEB */
+        .equipment-slider {
+            width: 100%;
+            height: 380px; /* Más pequeño en web */
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-color: white;
+            margin-bottom: 30px;
+        }
+        
+        .slider-container {
+            display: flex;
+            width: 700%;
+            height: 100%;
+            animation: slide 35s infinite linear;
+        }
+        
+        .slide {
+            width: 14.2857%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        
+        .slide img {
+            max-width: 95%;
+            max-height: 95%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            14.28% { transform: translateX(0); }
+            17.85% { transform: translateX(-14.2857%); }
+            32.13% { transform: translateX(-14.2857%); }
+            35.70% { transform: translateX(-28.5714%); }
+            49.98% { transform: translateX(-28.5714%); }
+            53.55% { transform: translateX(-42.8571%); }
+            67.83% { transform: translateX(-42.8571%); }
+            71.40% { transform: translateX(-57.1428%); }
+            85.68% { transform: translateX(-57.1428%); }
+            89.25% { transform: translateX(-71.4285%); }
+            95.00% { transform: translateX(-71.4285%); }
+            100% { transform: translateX(-85.7142%); }
+        }
+        
+        .gallery { background-color: var(--light-gray); }
+        
+        /* Categorías mejor ajustadas - LIMITADO EL LARGO */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 0;
+        }
+        
         .category-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: auto;
-            min-height: 0;
+            max-width: 100%; /* Limitar ancho */
+            overflow: visible; /* Cambiado de hidden a visible */
         }
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .category-header {
-            background-color: var(--secondary);
             color: white;
-            padding: 15px;
+            padding: 12px 15px;
             text-align: center;
             cursor: pointer;
             position: relative;
-            min-height: 160px; /* Reducido de 200px */
+            min-height: 90px; /* Más compacto */
+            max-height: 90px; /* Límite fijo */
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            background-size: cover;
+            justify-content: center;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: white;
+            flex-shrink: 0; /* Evita que se encoja */
         }
         
         .category-header::before {
@@ -157,42 +220,39 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.5));
+            background: linear-gradient(to top, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.7));
             z-index: 1;
-            transition: background 0.3s ease;
-        }
-        
-        .category-card:hover .category-header::before {
-            background: linear-gradient(to top, rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.6));
         }
         
         .category-header h3 {
             color: white;
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
             position: relative;
             z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
             line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            font-weight: 600;
         }
         
         .expand-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background-color: var(--primary);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            font-size: 18px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .expand-btn:hover {
@@ -205,58 +265,103 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease, padding 0.5s ease;
+            width: 100%; /* Asegurar que ocupe todo el ancho */
         }
         
         .equipment-list.expanded {
-            padding: 15px; /* Reducido de 20px */
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        
-        .equipment-list::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .equipment-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 5px;
-        }
-        
-        .equipment-list::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
+            padding: 12px 15px;
+            max-height: none; /* Cambiado: ya no altura máxima fija */
+            overflow: visible; /* Cambiado: sin scroll */
         }
         
         .equipment-item {
-            padding: 8px 0; /* Reducido de 10px */
+            padding: 6px 0;
             border-bottom: 1px solid #eee;
             color: var(--gray);
-            font-size: 0.9rem; /* Reducido de 0.95rem */
+            font-size: 0.82rem;
             list-style-type: none;
-            padding-left: 15px; /* Reducido de 20px */
+            padding-left: 12px;
             position: relative;
             line-height: 1.4;
+            white-space: normal; /* Permitir que el texto se ajuste */
+            word-wrap: break-word; /* Romper palabras largas */
         }
         
         .equipment-item:before {
-            content: "-";
+            content: "•";
             position: absolute;
-            left: 5px;
+            left: 3px;
             color: var(--primary);
+            font-weight: bold;
         }
         
         .equipment-item:last-child {
             border-bottom: none;
         }
         
-        /* sección de garantía */
+        /* Botón "Ver más categorías" - AHORA VISIBLE EN WEB TAMBIÉN */
+        .view-more-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .view-more-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(255, 87, 34, 0.2);
+        }
+        
+        .view-more-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.3);
+        }
+        
+        .view-more-btn .show-icon {
+            display: inline;
+        }
+        
+        .view-more-btn .hide-icon {
+            display: none;
+        }
+        
+        .view-more-btn.showing .show-icon {
+            display: none;
+        }
+        
+        .view-more-btn.showing .hide-icon {
+            display: inline;
+        }
+        
+        /* Categorías adicionales ocultas inicialmente */
+        .additional-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            width: 100%; /* Asegurar ancho completo */
+        }
+        
+        .additional-categories.hidden {
+            display: none;
+        }
+        
         .guarantee-content { text-align: center; max-width: 800px; margin: 0 auto; }
         .guarantee-icon { font-size: 60px; color: var(--primary); margin-bottom: 20px; }
         .features { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
         .feature { display: flex; flex-direction: column; align-items: center; max-width: 200px; text-align: center; }
         .feature i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
         
-        /* sección de contacto con campos más visibles */
         .contact-section { background-color: var(--light-gray); }
         .contact-container { display: flex; gap: 50px; flex-wrap: wrap; }
         .contact-form, .contact-info { flex: 1; min-width: 300px; }
@@ -279,14 +384,12 @@
             box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.2);
         }
         
-        /* información de contacto */
         .contact-info-items { display: flex; flex-direction: column; gap: 25px; margin-bottom: 30px; }
         .contact-info-item { display: flex; align-items: flex-start; }
         .contact-info-item i { color: var(--primary); font-size: 22px; margin-right: 15px; margin-top: 5px; }
         .contact-info-item-content h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary); }
         .contact-info-item-content p { color: var(--gray); line-height: 1.5; }
         
-        /* enlaces de contacto */
         .contact-link { 
             color: var(--primary); 
             text-decoration: underline; 
@@ -295,7 +398,6 @@
         }
         .contact-link:hover { color: var(--primary-dark); }
         
-        /* enlaces sociales */
         .social-links { 
             display: flex; 
             gap: 25px; 
@@ -321,21 +423,11 @@
             transform: translateY(-3px); 
         }
         
-        /* footer */
         footer { background-color: var(--secondary); color: white; padding: 60px 0 30px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
         .footer-logo-container { flex: 2; min-width: 300px; }
         .footer-logo-img { max-height: 80px; width: auto; margin-bottom: 20px; }
-        .footer-contact { flex: 1; min-width: 250px; }
-        .footer-contact h3 { color: white; margin-bottom: 20px; font-size: 1.3rem; position: relative; padding-bottom: 10px; }
-        .footer-contact h3:after { content: ''; position: absolute; width: 40px; height: 3px; background-color: var(--primary); bottom: 0; left: 0; }
         
-        /* información de contacto en footer */
-        .footer-contact-items { display: flex; flex-direction: column; gap: 15px; }
-        .footer-contact-item { display: flex; align-items: flex-start; }
-        .footer-contact-item i { color: var(--primary); margin-right: 10px; font-size: 18px; }
-        
-        /* enlaces sociales en footer */
         .footer-social-links { 
             display: flex; 
             gap: 25px; 
@@ -359,17 +451,8 @@
             transform: translateY(-3px); 
         }
         
-        /* copyright */
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; }
-        .footer-link { 
-            color: var(--primary); 
-            text-decoration: underline; 
-            transition: color 0.3s ease; 
-            font-weight: 500;
-        }
-        .footer-link:hover { color: #ff8a65; }
         
-        /* estilos responsive para tablets */
         @media (max-width: 992px) {
             nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary); flex-direction: column; padding: 20px 0; }
             nav ul.active { display: flex; }
@@ -405,9 +488,23 @@
                 order: 4;
                 width: 100%;
             }
-            .categories-grid {
+            /* En móvil: carrusel ENCIMA de todo */
+            .gallery-content {
+                flex-direction: column;
+            }
+            .slider-sidebar {
+                order: -1; /* Carrusel primero */
+            }
+            .categories-sidebar {
+                order: 1; /* Categorías después */
+            }
+            .equipment-slider {
+                height: 320px;
+                margin-bottom: 30px;
+            }
+            .additional-categories {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
+                gap: 15px;
             }
             .social-links a,
             .footer-social-links a {
@@ -417,22 +514,36 @@
             }
         }
         
-        /* estilos responsive para móviles grandes */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .section-title h2 { font-size: 2rem; }
             .hero { padding: 150px 20px 80px; }
             .section { padding: 60px 0; }
+            .equipment-slider {
+                height: 280px;
+                margin-bottom: 25px;
+            }
             .categories-grid {
+                gap: 12px;
+            }
+            .additional-categories {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 15px;
+                gap: 12px;
+            }
+            .category-card {
+                max-height: none; /* Removido para móvil también */
             }
             .category-header {
-                min-height: 140px; /* Aún más compacto en móviles */
-                padding: 12px;
+                min-height: 85px;
+                max-height: 85px;
+                padding: 10px 12px;
             }
             .category-header h3 {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
+            }
+            .equipment-item {
+                font-size: 0.8rem;
+                padding: 5px 0;
             }
             .social-links a,
             .footer-social-links a {
@@ -442,7 +553,6 @@
             }
         }
         
-        /* estilos responsive para móviles pequeños */
         @media (max-width: 576px) {
             .hero h1 { font-size: 1.8rem; }
             .btn-primary { padding: 14px 30px; font-size: 1rem; }
@@ -450,9 +560,31 @@
             .mobile-menu-btn {
                 order: 2;
             }
+            .equipment-slider {
+                height: 220px;
+                margin-bottom: 20px;
+            }
             .categories-grid {
+                gap: 10px;
+            }
+            .additional-categories {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 10px;
+            }
+            .category-header {
+                min-height: 80px;
+                max-height: 80px;
+                padding: 8px 10px;
+            }
+            .category-header h3 {
+                font-size: 0.9rem;
+            }
+            .expand-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+                top: 8px;
+                right: 8px;
             }
             .social-links {
                 gap: 20px;
@@ -464,10 +596,22 @@
                 font-size: 18px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .equipment-slider {
+                height: 180px;
+            }
+            .category-header {
+                min-height: 75px;
+                max-height: 75px;
+            }
+            .category-header h3 {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- encabezado con logo, navegación y teléfono -->
     <header id="header">
         <div class="container header-container">
             <div class="logo-container">
@@ -490,7 +634,6 @@
         </div>
     </header>
 
-    <!-- sección principal con imagen de fondo y llamado a acción -->
     <section class="hero" id="home">
         <div class="container">
             <h1>Venta y Arriendo de Equipos y Maquinarias para Construcción</h1>
@@ -499,7 +642,6 @@
         </div>
     </section>
 
-    <!-- sección sobre la empresa -->
     <section class="section" id="nosotros">
         <div class="container">
             <div class="section-title"><h2>Nosotros</h2></div>
@@ -516,30 +658,137 @@
         </div>
     </section>
 
-    <!-- NUEVA GALERÍA DE EQUIPOS ORGANIZADA POR CATEGORÍAS -->
     <section class="section gallery" id="galeria">
         <div class="container">
             <div class="section-title"><h2>Galería de Equipos</h2></div>
             <p class="section-subtitle">Contamos con una amplia variedad de maquinarias y equipos para todo tipo de proyectos de construcción.</p>
             
-            <div class="categories-grid">
-                <!-- Categoría 1: Movimiento de Tierra -->
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('movtierra.jfif');">
-                        <h3>Movimiento de Tierra</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Máquina retroexcavadora Case 580N</div>
-                        <div class="equipment-item">Minicargador Case SR175</div>
-                        <div class="equipment-item">Minicargador Case SR200</div>
-                        <div class="equipment-item">Minicargador Bobcat S70</div>
+            <!-- Nuevo diseño: categorías a la izquierda y carrusel a la derecha -->
+            <div class="gallery-content">
+                <div class="categories-sidebar">
+                    <div class="categories-grid">
+                        <!-- Categorías principales -->
+                        
+                        <div class="category-card">
+                            <div class="category-header" style="background-image: url('galeria/vehiculo.png'); background-color: white;">
+                                <h3>Vehículos y Logística</h3>
+                                <button class="expand-btn">+</button>
+                            </div>
+                            <div class="equipment-list">
+                                <div class="equipment-item">Camión pluma International grua HV477</div>
+                                <div class="equipment-item">Camioneta Nissan Navara P.P.U. CTJL22</div>
+                                <div class="equipment-item">Camioneta Nissan NP300 P.P.U. HVVR75</div>
+                            </div>
+                        </div>
+
+                        <div class="category-card">
+                            <div class="category-header" style="background-image: url('galeria/compresor.jpg'); background-color: white;">
+                                <h3>Compresores y Neumáticos</h3>
+                                <button class="expand-btn">+</button>
+                            </div>
+                            <div class="equipment-list">
+                                <div class="equipment-item">Compresor eléctrico 200 LTS</div>
+                                <div class="equipment-item">Compresor neumático diesel 185 CFM</div>
+                                <div class="equipment-item">Compresor neumático diesel 210 CFM</div>
+                                <div class="equipment-item">Compresor neumático diesel 375 CFM</div>
+                                <div class="equipment-item">Martillo neumático</div>
+                                <div class="equipment-item">Manguera para aire de 1" de 30 MTS</div>
+                            </div>
+                        </div>
+
+                        <div class="category-card">
+                            <div class="category-header" style="background-image: url('galeria/iluminacion.jpg'); background-color: white;">
+                                <h3>Iluminaria y Acceso</h3>
+                                <button class="expand-btn">+</button>
+                            </div>
+                            <div class="equipment-list">
+                                <div class="equipment-item">Torres luminarias</div>
+                                <div class="equipment-item">Bandeja de residuos de acero para torres de iluminación</div>
+                                <div class="equipment-item">Alzahombre Snorkel S3226E</div>
+                            </div>
+                        </div>
+
+                        <div class="category-card">
+                            <div class="category-header" style="background-image: url('galeria/generadorenergia.webp'); background-color: white;">
+                                <h3>Generación de Energía</h3>
+                                <button class="expand-btn">+</button>
+                            </div>
+                            <div class="equipment-list">
+                                <div class="equipment-item">Generador gasolina monofasico 5KVA</div>
+                                <div class="equipment-item">Generador gasolina monofasico 7KVA</div>
+                                <div class="equipment-item">Generador diesel monofasico de 6KVA</div>
+                                <div class="equipment-item">Generador diesel trifasico de 10KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 15 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 20 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 30 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 35 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 42 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 45 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 80 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado de 100 KVA</div>
+                                <div class="equipment-item">Generador diesel insonorizado Denyo DCA25</div>
+                                <div class="equipment-item">Jaula de protección para generadores</div>
+                                <div class="equipment-item">Bandeja anti derrame de acero para generador</div>
+                            </div>
+                        </div>
+
+                        <div class="category-card">
+                            <div class="category-header" style="background-image: url('galeria/movtierra.jpg'); background-color: white;">
+                                <h3>Movimiento de Tierra</h3>
+                                <button class="expand-btn">+</button>
+                            </div>
+                            <div class="equipment-list">
+                                <div class="equipment-item">Máquina retroexcavadora Case 580N</div>
+                                <div class="equipment-item">Minicargador Case SR175</div>
+                                <div class="equipment-item">Minicargador Case SR200</div>
+                                <div class="equipment-item">Minicargador Bobcat S70</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Categoría 2: Compactación de Suelo -->
+                
+                <div class="slider-sidebar">
+                    <!-- Carrusel de imágenes deslizantes con las imágenes de tu carpeta "carrusel" -->
+                    <div class="equipment-slider">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="carrusel/camion.jpeg" alt="Camión pluma International">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/camion2.jpeg" alt="Camioneta Nissan">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/camion3.jpeg" alt="Transporte de equipos">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/compresor.jpg" alt="Compresores de aire">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/generador.jpg" alt="Generadores de energía">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/iluminaria.jpg" alt="Torres de iluminación">
+                            </div>
+                            <div class="slide">
+                                <img src="carrusel/retroexcavadora.png" alt="Retroexcavadora Case">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botón "Ver más categorías" (visible en web y móvil) -->
+            <div class="view-more-container">
+                <button class="view-more-btn" id="viewMoreBtn">
+                    <span class="show-icon"><i class="fas fa-plus"></i> Ver más categorías</span>
+                    <span class="hide-icon"><i class="fas fa-minus"></i> Ver menos categorías</span>
+                </button>
+            </div>
+            
+            <!-- Categorías adicionales ocultas inicialmente -->
+            <div class="additional-categories hidden" id="additionalCategories">
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('compacsuelo.jpg');">
+                    <div class="category-header" style="background-image: url('galeria/compacsuelo.jpg'); background-color: white;">
                         <h3>Compactación de Suelo</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -560,34 +809,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 3: Generación de Energía Eléctrica -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('generadorenergia.webp');">
-                        <h3>Generación de Energía</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Generador gasolina monofasico 5KVA</div>
-                        <div class="equipment-item">Generador gasolina monofasico 7KVA</div>
-                        <div class="equipment-item">Generador diesel monofasico de 6KVA</div>
-                        <div class="equipment-item">Generador diesel trifasico de 10KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 15 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 20 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 30 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 35 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 42 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 45 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 80 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado de 100 KVA</div>
-                        <div class="equipment-item">Generador diesel insonorizado Denyo DCA25</div>
-                        <div class="equipment-item">Jaula de protección para generadores</div>
-                        <div class="equipment-item">Bandeja anti derrame de acero para generador</div>
-                    </div>
-                </div>
-
-                <!-- Categoría 4: Equipos de Perforación y Demolición -->
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('demoledor.jpg');">
+                    <div class="category-header" style="background-image: url('galeria/demoledor.jpg'); background-color: white;">
                         <h3>Perforación y Demolición</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -609,9 +832,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 5: Equipos de Soldadura -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('soldadora.jpg');">
+                    <div class="category-header" style="background-image: url('galeria/soldadora.jpg'); background-color: white;">
                         <h3>Soldadura</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -626,9 +848,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 6: Bombas de Agua -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('bombaagua.webp');">
+                    <div class="category-header" style="background-image: url('galeria/bombaagua.webp'); background-color: white;">
                         <h3>Bombas de Agua</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -643,9 +864,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 7: Equipos de Hormigón -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('equipohormigon.jpg');">
+                    <div class="category-header" style="background-image: url('galeria/equipohormigon.jpg'); background-color: white;">
                         <h3>Equipos de Hormigón</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -657,25 +877,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 8: Compresores y Equipos Neumáticos -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('compresor.jpg');">
-                        <h3>Compresores y Neumáticos</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Compresor eléctrico 200 LTS</div>
-                        <div class="equipment-item">Compresor neumático diesel 185 CFM</div>
-                        <div class="equipment-item">Compresor neumático diesel 210 CFM</div>
-                        <div class="equipment-item">Compresor neumático diesel 375 CFM</div>
-                        <div class="equipment-item">Martillo neumático</div>
-                        <div class="equipment-item">Manguera para aire de 1" de 30 MTS</div>
-                    </div>
-                </div>
-
-                <!-- Categoría 9: Equipos de Corte y Termofusión -->
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('cortadora.webp');">
+                    <div class="category-header" style="background-image: url('galeria/cortadora.webp'); background-color: white;">
                         <h3>Corte y Termofusión</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -691,22 +894,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 10: Elevación y Acceso -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('elevamiento.webp');">
-                        <h3>Elevación y Acceso</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Alzahombre Snorkel S3226E</div>
-                        <div class="equipment-item">Torre luminaria</div>
-                        <div class="equipment-item">Bandeja de residuos de acero para torres de iluminación</div>
-                    </div>
-                </div>
-
-                <!-- Categoría 11: Herramientas Eléctricas -->
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('herramientaselectricas.webp');">
+                    <div class="category-header" style="background-image: url('galeria/herramientaselectricas.webp'); background-color: white;">
                         <h3>Herramientas Eléctricas</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -725,22 +914,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 12: Vehículos y Logística -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('vehiculo.png');">
-                        <h3>Vehículos y Logística</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Camión pluma International grua HV477</div>
-                        <div class="equipment-item">Camioneta Nissan Navara P.P.U. CTJL22</div>
-                        <div class="equipment-item">Camioneta Nissan NP300 P.P.U. HVVR75</div>
-                    </div>
-                </div>
-
-                <!-- Categoría 13: Equipos de Perforación de Suelos -->
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('perforacion.png');">
+                    <div class="category-header" style="background-image: url('galeria/perforacion.png'); background-color: white;">
                         <h3>Perforación de Suelos</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -752,19 +927,14 @@
                         <div class="equipment-item">Sonda vibradora HF1</div>
                         <div class="equipment-item">Unidad motriz con sonda alta frecuencia marca Dingo W</div>
                         <div class="equipment-item">Unidad motriz bencinera con sonda vibratoria de 28mm</div>
-                        <div class="equipment-item">Unidad motriz bencinera con sonda vibratoria de 38mm</div>
-                        <div class="equipment-item">Unidad motriz bencinera con sonda vibratoria de 45mm</div>
-                        <div class="equipment-item">Unidad motriz bencinera con sonda vibratoria de 60mm</div>
-                        <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 28mm</div>
                         <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 38mm</div>
                         <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 45mm</div>
                         <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 60mm</div>
                     </div>
                 </div>
 
-                <!-- Categoría 14: Equipos de Limpieza y Lavado -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('hidrolavadora.webp');">
+                    <div class="category-header" style="background-image: url('galeria/hidrolavadora.webp'); background-color: white;">
                         <h3>Limpieza y Lavado</h3>
                         <button class="expand-btn">+</button>
                     </div>
@@ -774,25 +944,23 @@
                     </div>
                 </div>
 
-                <!-- Categoría 15: Accesorios y Repuestos -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('repuestos.jpg');">
+                    <div class="category-header" style="background-image: url('galeria/bomag.jpg'); background-color: white;">
                         <h3>Accesorios y Repuestos</h3>
                         <button class="expand-btn">+</button>
                     </div>
                     <div class="equipment-list">
+                        <div class="equipment-item">Extensión de rodillo Bomag BMP8500</div>
                         <div class="equipment-item">Cuña para demoledor de 1 1/8"</div>
                         <div class="equipment-item">Broca de desbaste</div>
                         <div class="equipment-item">Manguera espirilada de 3"</div>
                         <div class="equipment-item">Manguera espirilada de 4"</div>
-                        <div class="equipment-item">Extensión de rodillo Bomag BMP8500</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- sección de garantías y características -->
     <section class="section" id="garantia">
         <div class="container">
             <div class="section-title"><h2>Garantía de Calidad</h2></div>
@@ -808,13 +976,11 @@
         </div>
     </section>
 
-    <!-- sección de contacto con formulario e información -->
     <section class="section contact-section" id="contacto">
         <div class="container">
             <div class="section-title"><h2>Contacto</h2></div>
             <div class="contact-container">
                 <div class="contact-form">
-                    <!-- formulario de contacto que se envía a formspree -->
                     <form id="contactForm" action="https://formspree.io/f/xkobrjze" method="POST">
                         <div class="form-group">
                             <label for="nombre">Tu nombre *</label>
@@ -828,13 +994,11 @@
                             <label for="telefono">Tu teléfono</label>
                             <input type="tel" id="telefono" name="telefono">
                         </div>
-                        <!-- campo oculto para el asunto del correo -->
                         <input type="hidden" id="asunto" name="asunto" value="Consulta desde sitio web Sucor SpA">
                         <div class="form-group">
                             <label for="mensaje">Tu mensaje *</label>
                             <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
                         </div>
-                        <!-- campos ocultos para configuración de formspree -->
                         <input type="hidden" name="_subject" value="Nuevo mensaje desde Sucor SpA">
                         <input type="hidden" name="_replyto" id="_replyto">
                         <button type="submit" class="btn-primary">Enviar Mensaje</button>
@@ -896,7 +1060,6 @@
         </div>
     </section>
 
-    <!-- footer con logo -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -905,22 +1068,21 @@
                     <p>Líderes en arriendo de maquinaria y equipos para construcción en la región de Coquimbo. Ofrecemos soluciones integrales con equipos de alta calidad y tecnología de vanguardia.</p>
                 </div>
             </div>
-            <!-- copyright -->
             <div class="copyright"><p>&copy; 2026 Sucor SpA. Todos los derechos reservados.</p></div>
         </div>
     </footer>
 
     <script>
-        // toggle del menú móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
+        const viewMoreBtn = document.getElementById('viewMoreBtn');
+        const additionalCategories = document.getElementById('additionalCategories');
+        
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            // cambia el ícono del botón
             mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
-        // cierra el menú al hacer clic en un enlace
         document.querySelectorAll('#mainNav a').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
@@ -928,7 +1090,6 @@
             });
         });
         
-        // scroll suave para los enlaces internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -941,28 +1102,42 @@
             });
         });
         
-        // configuración del formulario para formspree
         const contactForm = document.getElementById('contactForm');
         const replyToField = document.getElementById('_replyto');
         const correoField = document.getElementById('correo');
         
-        // sincroniza el campo de correo con el campo de respuesta
         correoField.addEventListener('input', function() { 
             replyToField.value = this.value; 
         });
         
-        // si ya hay un valor en el correo, lo establece en el campo oculto
         if (correoField.value) replyToField.value = correoField.value;
         
-        // asegura que el campo de respuesta se actualice antes de enviar
         contactForm.addEventListener('submit', function() { 
             replyToField.value = correoField.value; 
         });
 
-        // Sistema de acordeón para las categorías de equipos - AHORA SE EXPANDE AL HACER CLIC EN EL ENCABEZADO TAMBIÉN
+        // Función para mostrar/ocultar categorías adicionales
+        if (viewMoreBtn && additionalCategories) {
+            viewMoreBtn.addEventListener('click', function() {
+                additionalCategories.classList.toggle('hidden');
+                viewMoreBtn.classList.toggle('showing');
+                
+                if (additionalCategories.classList.contains('hidden')) {
+                    // Desplazarse al botón después de ocultar
+                    setTimeout(() => {
+                        viewMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                } else {
+                    // Desplazarse a las categorías mostradas
+                    setTimeout(() => {
+                        additionalCategories.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
+            });
+        }
+
         document.querySelectorAll('.expand-btn, .category-header').forEach(element => {
             element.addEventListener('click', function(event) {
-                // Evitar que el clic en el botón active también el clic en el encabezado
                 if(event.target.classList.contains('expand-btn')) {
                     event.stopPropagation();
                 }
@@ -970,22 +1145,18 @@
                 let equipmentList;
                 let expandBtn;
                 
-                // Si se hizo clic en el botón
                 if(event.target.classList.contains('expand-btn')) {
                     equipmentList = event.target.parentElement.nextElementSibling;
                     expandBtn = event.target;
                 } 
-                // Si se hizo clic en el encabezado (pero no en el botón)
                 else {
                     const categoryCard = event.target.closest('.category-card');
                     equipmentList = categoryCard.querySelector('.equipment-list');
                     expandBtn = categoryCard.querySelector('.expand-btn');
                 }
                 
-                // Alternar la clase expanded
                 equipmentList.classList.toggle('expanded');
                 
-                // Cambiar el símbolo del botón
                 if (equipmentList.classList.contains('expanded')) {
                     expandBtn.textContent = '-';
                     expandBtn.setAttribute('aria-expanded', 'true');
