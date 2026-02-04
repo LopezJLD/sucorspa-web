@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Manteniendo los estilos anteriores para el resto de la página */
         :root {
             --primary: #ff5722;
             --primary-dark: #d84315;
@@ -100,197 +101,207 @@
         .about-image { flex: 1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .about-image img { width: 100%; height: auto; display: block; }
         
-        /* Nuevo diseño: carrusel a la derecha y categorías a la izquierda */
-        .gallery-content {
+        /* GALERÍA DE EQUIPOS - NUEVO DISEÑO */
+        .gallery { background-color: var(--light-gray); }
+        
+        /* Filtros por categorías */
+        .category-filters {
             display: flex;
-            gap: 40px;
-            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
         }
         
-        .categories-sidebar {
-            flex: 1;
-            min-width: 300px;
-            max-width: 350px;
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .slider-sidebar {
-            flex: 2;
-            min-width: 300px;
+        .filter-btn:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
         }
         
-        /* Estilos para el carrusel de imágenes - MÁS PEQUEÑO EN WEB */
-        .equipment-slider {
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Equipos destacados (carousel) */
+        .featured-equipment {
+            margin-bottom: 60px;
+        }
+        
+        .featured-slider {
             width: 100%;
-            height: 380px; /* Más pequeño en web */
             overflow: hidden;
             position: relative;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
             background-color: white;
-            margin-bottom: 30px;
         }
         
-        .slider-container {
-            display: flex;
-            width: 700%;
-            height: 100%;
-            animation: slide 35s infinite linear;
+        .featured-slide {
+            display: none;
+            padding: 30px;
+            text-align: center;
+            background-color: white;
+            border-radius: 12px;
         }
         
-        .slide {
-            width: 14.2857%;
-            height: 100%;
-            position: relative;
+        .featured-slide.active {
+            display: block;
+        }
+        
+        .featured-image {
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #f5f5f5;
         }
         
-        .slide img {
-            max-width: 95%;
-            max-height: 95%;
-            width: auto;
-            height: auto;
+        .featured-image img {
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
         }
         
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            14.28% { transform: translateX(0); }
-            17.85% { transform: translateX(-14.2857%); }
-            32.13% { transform: translateX(-14.2857%); }
-            35.70% { transform: translateX(-28.5714%); }
-            49.98% { transform: translateX(-28.5714%); }
-            53.55% { transform: translateX(-42.8571%); }
-            67.83% { transform: translateX(-42.8571%); }
-            71.40% { transform: translateX(-57.1428%); }
-            85.68% { transform: translateX(-57.1428%); }
-            89.25% { transform: translateX(-71.4285%); }
-            95.00% { transform: translateX(-71.4285%); }
-            100% { transform: translateX(-85.7142%); }
+        .featured-details h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
         
-        .gallery { background-color: var(--light-gray); }
+        .featured-details p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
         
-        /* Categorías mejor ajustadas - LIMITADO EL LARGO */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+        .slider-controls {
+            display: flex;
+            justify-content: center;
             gap: 15px;
-            margin-top: 0;
+            margin-top: 25px;
+        }
+        
+        .slider-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-control.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Categorías de equipos (grid) */
+        .equipment-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         .category-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 100%; /* Limitar ancho */
-            overflow: visible; /* Cambiado de hidden a visible */
         }
+        
         .category-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
         .category-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2530 100%);
             color: white;
-            padding: 12px 15px;
+            padding: 20px;
             text-align: center;
-            cursor: pointer;
             position: relative;
-            min-height: 90px; /* Más compacto */
-            max-height: 90px; /* Límite fijo */
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: white;
-            flex-shrink: 0; /* Evita que se encoja */
         }
         
-        .category-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.7));
-            z-index: 1;
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: var(--primary);
         }
         
         .category-header h3 {
             color: white;
+            font-size: 1.2rem;
             margin: 0;
-            font-size: 1rem;
-            position: relative;
-            z-index: 2;
-            line-height: 1.3;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-            font-weight: 600;
+            line-height: 1.4;
         }
         
-        .expand-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .expand-btn:hover {
-            background-color: var(--primary-dark);
-            transform: scale(1.1);
+        .category-body {
+            padding: 20px;
         }
         
         .equipment-list {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-            width: 100%; /* Asegurar que ocupe todo el ancho */
+            list-style: none;
+            margin-bottom: 20px;
+            max-height: 180px;
+            overflow-y: auto;
+            padding-right: 5px;
         }
         
-        .equipment-list.expanded {
-            padding: 12px 15px;
-            max-height: none; /* Cambiado: ya no altura máxima fija */
-            overflow: visible; /* Cambiado: sin scroll */
+        .equipment-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .equipment-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .equipment-list::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
         }
         
         .equipment-item {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #eee;
             color: var(--gray);
-            font-size: 0.82rem;
-            list-style-type: none;
-            padding-left: 12px;
+            font-size: 0.9rem;
+            padding-left: 20px;
             position: relative;
             line-height: 1.4;
-            white-space: normal; /* Permitir que el texto se ajuste */
-            word-wrap: break-word; /* Romper palabras largas */
         }
         
         .equipment-item:before {
-            content: "•";
+            content: "▸";
             position: absolute;
-            left: 3px;
+            left: 0;
             color: var(--primary);
             font-weight: bold;
         }
@@ -299,17 +310,54 @@
             border-bottom: none;
         }
         
-        /* Botón "Ver más categorías" - AHORA VISIBLE EN WEB TAMBIÉN */
+        .category-actions {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .view-equipment-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .view-equipment-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Todas las categorías (ocultas inicialmente) */
+        .all-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .all-categories.hidden {
+            display: none;
+        }
+        
+        /* Botón ver más categorías */
         .view-more-container {
             text-align: center;
-            margin: 30px 0;
+            margin-top: 40px;
         }
         
         .view-more-btn {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 32px;
             border-radius: 4px;
             font-weight: 600;
             font-size: 1rem;
@@ -317,14 +365,14 @@
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 8px rgba(255, 87, 34, 0.2);
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.25);
         }
         
         .view-more-btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.35);
         }
         
         .view-more-btn .show-icon {
@@ -343,25 +391,14 @@
             display: inline;
         }
         
-        /* Categorías adicionales ocultas inicialmente */
-        .additional-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-            width: 100%; /* Asegurar ancho completo */
-        }
-        
-        .additional-categories.hidden {
-            display: none;
-        }
-        
+        /* Garantía de calidad (manteniendo el estilo original) */
         .guarantee-content { text-align: center; max-width: 800px; margin: 0 auto; }
         .guarantee-icon { font-size: 60px; color: var(--primary); margin-bottom: 20px; }
         .features { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
         .feature { display: flex; flex-direction: column; align-items: center; max-width: 200px; text-align: center; }
         .feature i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
         
+        /* Sección de contacto (manteniendo el estilo original) */
         .contact-section { background-color: var(--light-gray); }
         .contact-container { display: flex; gap: 50px; flex-wrap: wrap; }
         .contact-form, .contact-info { flex: 1; min-width: 300px; }
@@ -453,6 +490,7 @@
         
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; }
         
+        /* Responsive */
         @media (max-width: 992px) {
             nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary); flex-direction: column; padding: 20px 0; }
             nav ul.active { display: flex; }
@@ -488,29 +526,12 @@
                 order: 4;
                 width: 100%;
             }
-            /* En móvil: carrusel ENCIMA de todo */
-            .gallery-content {
-                flex-direction: column;
+            .featured-image {
+                height: 220px;
             }
-            .slider-sidebar {
-                order: -1; /* Carrusel primero */
-            }
-            .categories-sidebar {
-                order: 1; /* Categorías después */
-            }
-            .equipment-slider {
-                height: 320px;
-                margin-bottom: 30px;
-            }
-            .additional-categories {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 15px;
-            }
-            .social-links a,
-            .footer-social-links a {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
+            .equipment-categories {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
             }
         }
         
@@ -519,37 +540,22 @@
             .section-title h2 { font-size: 2rem; }
             .hero { padding: 150px 20px 80px; }
             .section { padding: 60px 0; }
-            .equipment-slider {
-                height: 280px;
-                margin-bottom: 25px;
+            .category-filters {
+                gap: 8px;
             }
-            .categories-grid {
-                gap: 12px;
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
-            .additional-categories {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 12px;
+            .featured-image {
+                height: 180px;
             }
-            .category-card {
-                max-height: none; /* Removido para móvil también */
+            .equipment-categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .category-header {
-                min-height: 85px;
-                max-height: 85px;
-                padding: 10px 12px;
-            }
-            .category-header h3 {
-                font-size: 0.95rem;
-            }
-            .equipment-item {
-                font-size: 0.8rem;
-                padding: 5px 0;
-            }
-            .social-links a,
-            .footer-social-links a {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
+            .all-categories {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -560,53 +566,15 @@
             .mobile-menu-btn {
                 order: 2;
             }
-            .equipment-slider {
-                height: 220px;
-                margin-bottom: 20px;
-            }
-            .categories-grid {
-                gap: 10px;
-            }
-            .additional-categories {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .featured-image {
+                height: 160px;
             }
             .category-header {
-                min-height: 80px;
-                max-height: 80px;
-                padding: 8px 10px;
+                min-height: 100px;
+                padding: 15px;
             }
             .category-header h3 {
-                font-size: 0.9rem;
-            }
-            .expand-btn {
-                width: 25px;
-                height: 25px;
-                font-size: 14px;
-                top: 8px;
-                right: 8px;
-            }
-            .social-links {
-                gap: 20px;
-            }
-            .social-links a,
-            .footer-social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .equipment-slider {
-                height: 180px;
-            }
-            .category-header {
-                min-height: 75px;
-                max-height: 75px;
-            }
-            .category-header h3 {
-                font-size: 0.85rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -658,303 +626,378 @@
         </div>
     </section>
 
+    <!-- NUEVA SECCIÓN DE GALERÍA DE EQUIPOS -->
     <section class="section gallery" id="galeria">
         <div class="container">
             <div class="section-title"><h2>Galería de Equipos</h2></div>
             <p class="section-subtitle">Contamos con una amplia variedad de maquinarias y equipos para todo tipo de proyectos de construcción.</p>
             
-            <!-- Nuevo diseño: categorías a la izquierda y carrusel a la derecha -->
-            <div class="gallery-content">
-                <div class="categories-sidebar">
-                    <div class="categories-grid">
-                        <!-- Categorías principales -->
-                        
-                        <div class="category-card">
-                            <div class="category-header" style="background-image: url('galeria/vehiculo.png'); background-color: white;">
-                                <h3>Vehículos y Logística</h3>
-                                <button class="expand-btn">+</button>
-                            </div>
-                            <div class="equipment-list">
-                                <div class="equipment-item">Camión pluma International grua HV477</div>
-                                <div class="equipment-item">Camioneta Nissan Navara P.P.U. CTJL22</div>
-                                <div class="equipment-item">Camioneta Nissan NP300 P.P.U. HVVR75</div>
-                            </div>
+            <!-- Filtros por categorías -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i> Todos los equipos
+                </button>
+                <button class="filter-btn" data-category="camiones">
+                    <i class="fas fa-truck"></i> Camiones
+                </button>
+                <button class="filter-btn" data-category="generadores">
+                    <i class="fas fa-bolt"></i> Generadores
+                </button>
+                <button class="filter-btn" data-category="compresores">
+                    <i class="fas fa-compress-arrows-alt"></i> Compresores
+                </button>
+                <button class="filter-btn" data-category="iluminacion">
+                    <i class="fas fa-lightbulb"></i> Iluminación
+                </button>
+                <button class="filter-btn" data-category="movimiento">
+                    <i class="fas fa-tractor"></i> Movimiento de Tierra
+                </button>
+            </div>
+            
+            <!-- Equipos destacados (carousel) -->
+            <div class="featured-equipment">
+                <div class="featured-slider">
+                    <!-- Slide 1: Camiones -->
+                    <div class="featured-slide active" data-category="camiones">
+                        <div class="featured-image">
+                            <img src="carrusel/camion.jpeg" alt="Camiones pluma International">
                         </div>
-
-                        <div class="category-card">
-                            <div class="category-header" style="background-image: url('galeria/compresor.jpg'); background-color: white;">
-                                <h3>Compresores y Neumáticos</h3>
-                                <button class="expand-btn">+</button>
-                            </div>
-                            <div class="equipment-list">
-                                <div class="equipment-item">Compresor eléctrico 200 LTS</div>
-                                <div class="equipment-item">Compresor neumático diesel 185 CFM</div>
-                                <div class="equipment-item">Compresor neumático diesel 210 CFM</div>
-                                <div class="equipment-item">Compresor neumático diesel 375 CFM</div>
-                                <div class="equipment-item">Martillo neumático</div>
-                                <div class="equipment-item">Manguera para aire de 1" de 30 MTS</div>
-                            </div>
+                        <div class="featured-details">
+                            <h3>Camiones y Equipos de Carga</h3>
+                            <p>Contamos con camiones pluma y camiones planos con plataforma hidráulica para el transporte de maquinaria pesada y materiales de construcción.</p>
                         </div>
-
-                        <div class="category-card">
-                            <div class="category-header" style="background-image: url('galeria/iluminacion.jpg'); background-color: white;">
-                                <h3>Iluminaria y Acceso</h3>
-                                <button class="expand-btn">+</button>
-                            </div>
-                            <div class="equipment-list">
-                                <div class="equipment-item">Torres luminarias</div>
-                                <div class="equipment-item">Bandeja de residuos de acero para torres de iluminación</div>
-                                <div class="equipment-item">Alzahombre Snorkel S3226E</div>
-                            </div>
+                    </div>
+                    
+                    <!-- Slide 2: Generadores -->
+                    <div class="featured-slide" data-category="generadores">
+                        <div class="featured-image">
+                            <img src="carrusel/generador.jpg" alt="Generadores de energía">
                         </div>
-
-                        <div class="category-card">
-                            <div class="category-header" style="background-image: url('galeria/generadorenergia.webp'); background-color: white;">
-                                <h3>Generación de Energía</h3>
-                                <button class="expand-btn">+</button>
-                            </div>
-                            <div class="equipment-list">
-                                <div class="equipment-item">Generador gasolina monofasico 5KVA</div>
-                                <div class="equipment-item">Generador gasolina monofasico 7KVA</div>
-                                <div class="equipment-item">Generador diesel monofasico de 6KVA</div>
-                                <div class="equipment-item">Generador diesel trifasico de 10KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 15 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 20 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 30 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 35 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 42 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 45 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 80 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado de 100 KVA</div>
-                                <div class="equipment-item">Generador diesel insonorizado Denyo DCA25</div>
-                                <div class="equipment-item">Jaula de protección para generadores</div>
-                                <div class="equipment-item">Bandeja anti derrame de acero para generador</div>
-                            </div>
+                        <div class="featured-details">
+                            <h3>Generadores Diesel Insonorizados</h3>
+                            <p>Amplia gama de generadores desde 5KVA hasta 200KVA, ideales para proveer energía en obras sin acceso a la red eléctrica.</p>
                         </div>
-
-                        <div class="category-card">
-                            <div class="category-header" style="background-image: url('galeria/movtierra.jpg'); background-color: white;">
-                                <h3>Movimiento de Tierra</h3>
-                                <button class="expand-btn">+</button>
-                            </div>
-                            <div class="equipment-list">
-                                <div class="equipment-item">Máquina retroexcavadora Case 580N</div>
-                                <div class="equipment-item">Minicargador Case SR175</div>
-                                <div class="equipment-item">Minicargador Case SR200</div>
-                                <div class="equipment-item">Minicargador Bobcat S70</div>
-                            </div>
+                    </div>
+                    
+                    <!-- Slide 3: Compresores -->
+                    <div class="featured-slide" data-category="compresores">
+                        <div class="featured-image">
+                            <img src="carrusel/compresor.jpg" alt="Compresores de aire">
+                        </div>
+                        <div class="featured-details">
+                            <h3>Compresores Neumáticos</h3>
+                            <p>Compresores diesel de 185 a 375 CFM para herramientas neumáticas y trabajos que requieren aire comprimido de alta potencia.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Iluminación -->
+                    <div class="featured-slide" data-category="iluminacion">
+                        <div class="featured-image">
+                            <img src="carrusel/iluminaria.jpg" alt="Torres de iluminación">
+                        </div>
+                        <div class="featured-details">
+                            <h3>Torres de Iluminación</h3>
+                            <p>Torres luminarias LED y de haluro metálico para iluminación de obras en horario nocturno o en zonas con poca visibilidad.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5: Movimiento de tierra -->
+                    <div class="featured-slide" data-category="movimiento">
+                        <div class="featured-image">
+                            <img src="carrusel/retroexcavadora.png" alt="Retroexcavadoras Case">
+                        </div>
+                        <div class="featured-details">
+                            <h3>Minicargadores y Retroexcavadoras</h3>
+                            <p>Minicargador Bobcat S70 y retroexcavadora Case 580N para trabajos de excavación, carga y movimiento de tierra en espacios reducidos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 6: Camión 2 -->
+                    <div class="featured-slide" data-category="camiones">
+                        <div class="featured-image">
+                            <img src="carrusel/camion2.jpeg" alt="Camionetas Nissan">
+                        </div>
+                        <div class="featured-details">
+                            <h3>Vehículos de Transporte</h3>
+                            <p>Camionetas y vehículos de apoyo para el transporte de personal y herramientas a los sitios de construcción.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 7: Camión 3 -->
+                    <div class="featured-slide" data-category="camiones">
+                        <div class="featured-image">
+                            <img src="carrusel/camion3.jpeg" alt="Transporte de equipos">
+                        </div>
+                        <div class="featured-details">
+                            <h3>Logística y Transporte</h3>
+                            <p>Equipos especializados para el transporte seguro de maquinaria pesada a los diferentes puntos de obra.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="slider-sidebar">
-                    <!-- Carrusel de imágenes deslizantes con las imágenes de tu carpeta "carrusel" -->
-                    <div class="equipment-slider">
-                        <div class="slider-container">
-                            <div class="slide">
-                                <img src="carrusel/camion.jpeg" alt="Camión pluma International">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/camion2.jpeg" alt="Camioneta Nissan">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/camion3.jpeg" alt="Transporte de equipos">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/compresor.jpg" alt="Compresores de aire">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/generador.jpg" alt="Generadores de energía">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/iluminaria.jpg" alt="Torres de iluminación">
-                            </div>
-                            <div class="slide">
-                                <img src="carrusel/retroexcavadora.png" alt="Retroexcavadora Case">
-                            </div>
+                <!-- Controles del slider -->
+                <div class="slider-controls">
+                    <button class="slider-control active" data-slide="0"></button>
+                    <button class="slider-control" data-slide="1"></button>
+                    <button class="slider-control" data-slide="2"></button>
+                    <button class="slider-control" data-slide="3"></button>
+                    <button class="slider-control" data-slide="4"></button>
+                    <button class="slider-control" data-slide="5"></button>
+                    <button class="slider-control" data-slide="6"></button>
+                </div>
+            </div>
+            
+            <!-- Categorías de equipos principales -->
+            <div class="equipment-categories">
+                <!-- Camiones y Equipos de Carga -->
+                <div class="category-card" data-category="camiones">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Camiones y Equipos de Carga</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">CAMION PLUMA</li>
+                            <li class="equipment-item">CAMION PLANO CON PLATAFORMA HIDRAULICA</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Generadores Diesel -->
+                <div class="category-card" data-category="generadores">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Generadores Diesel Insonorizados</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 15 KVA</li>
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 20 KVA</li>
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 30 KVA</li>
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 45 KVA</li>
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 65 KVA</li>
+                            <li class="equipment-item">GENERADOR DIESEL INSONORIZADO DE 100 KVA</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compresores Neumáticos -->
+                <div class="category-card" data-category="compresores">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <h3>Compresores Neumáticos</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">COMPRESOR NEUMATICO DIESEL 185 A 375 CFM</li>
+                            <li class="equipment-item">COMPRESOR NEUMATICO DIESEL 375 CFM</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Torres de Iluminación -->
+                <div class="category-card" data-category="iluminacion">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Torres de Iluminación</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">TORRE LUMINARIA LED</li>
+                            <li class="equipment-item">TORRE LUMINARIA HALURO METAL</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Minicargadores y Retroexcavadoras -->
+                <div class="category-card" data-category="movimiento">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <h3>Minicargadores y Retroexcavadoras</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">MINICARGADOR BOBCAT S70</li>
+                            <li class="equipment-item">RETROEXCAVADORA CASE 580N</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Herramientas Eléctricas -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Herramientas Eléctricas</h3>
+                    </div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">ESMERIL ANGULAR DE 4 1/2"</li>
+                            <li class="equipment-item">ESMERIL ANGULAR DE 7"</li>
+                            <li class="equipment-item">DEMOLEDOR ELECTRONEUMATICO MAKITA HM1307C DE 15 KLS</li>
+                            <li class="equipment-item">CINCELADOR DEWALT D25810K 5KLS</li>
+                        </ul>
+                        <div class="category-actions">
+                            <button class="view-equipment-btn">
+                                <i class="fas fa-eye"></i> Ver Equipos
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Botón "Ver más categorías" (visible en web y móvil) -->
+            <!-- Botón para ver todas las categorías -->
             <div class="view-more-container">
                 <button class="view-more-btn" id="viewMoreBtn">
-                    <span class="show-icon"><i class="fas fa-plus"></i> Ver más categorías</span>
-                    <span class="hide-icon"><i class="fas fa-minus"></i> Ver menos categorías</span>
+                    <span class="show-icon"><i class="fas fa-plus"></i> Ver todas las categorías</span>
+                    <span class="hide-icon"><i class="fas fa-minus"></i> Ocultar categorías</span>
                 </button>
             </div>
             
-            <!-- Categorías adicionales ocultas inicialmente -->
-            <div class="additional-categories hidden" id="additionalCategories">
+            <!-- Todas las categorías (ocultas inicialmente) -->
+            <div class="all-categories hidden" id="allCategories">
+                <!-- Equipos de Compactación -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/compacsuelo.jpg'); background-color: white;">
-                        <h3>Compactación de Suelo</h3>
-                        <button class="expand-btn">+</button>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <h3>Equipos de Compactación</h3>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Vibropison bencinero Ammann ACR60</div>
-                        <div class="equipment-item">Vibropison diesel Ammann ACR70D</div>
-                        <div class="equipment-item">Vibropison diesel Bomag BT80D</div>
-                        <div class="equipment-item">Placa compactadora bencinera 2000KLS dinamicos</div>
-                        <div class="equipment-item">Placa compactadora diesel 2400KLS dinamicos</div>
-                        <div class="equipment-item">Placa compactadora diesel 2600KLS dinamicos</div>
-                        <div class="equipment-item">Placa compactadora diesel 3800KLS dinamicos</div>
-                        <div class="equipment-item">Placa compactadora diesel 5000KLS dinamicos</div>
-                        <div class="equipment-item">Placa compactadora diesel 8000KLS dinamicos</div>
-                        <div class="equipment-item">Rodillo compactador doble tambor Ammann ARW65</div>
-                        <div class="equipment-item">Rodillo compactador doble tambor Ammann ARX26</div>
-                        <div class="equipment-item">Rodillo compactador Ammann Rammax 1575 radio controlado</div>
-                        <div class="equipment-item">Rodillo compactador Bomag BMP8500 radio controlado</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">PLACA COMPACTADORA BENCINERA 2000KLS DINAMICOS</li>
+                            <li class="equipment-item">PLACA COMPACTADORA DIESEL 3800KLS DINAMICOS</li>
+                            <li class="equipment-item">PLACA COMPACTADORA DIESEL 8000KLS DINAMICOS</li>
+                            <li class="equipment-item">RODILLO COMPACTADOR DOBLE TAMBOR AMMANN ARW65</li>
+                            <li class="equipment-item">VIBROPISON DIESEL AMMANN ACR70D</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <!-- Máquinas Soldadoras -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/demoledor.jpg'); background-color: white;">
-                        <h3>Perforación y Demolición</h3>
-                        <button class="expand-btn">+</button>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Máquinas Soldadoras</h3>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Rotomartillo DeWalt D25133K SDS Plus</div>
-                        <div class="equipment-item">Rotomartillo DeWalt D25134K SDS Plus</div>
-                        <div class="equipment-item">Rotomartillo DeWalt D25601K 6KLS</div>
-                        <div class="equipment-item">Rotomartillo DeWalt D25762K 10KLS</div>
-                        <div class="equipment-item">Rotomartillo Ingco 10KLS</div>
-                        <div class="equipment-item">Cincelador DeWalt D25810K 5KLS</div>
-                        <div class="equipment-item">Cincelador DeWalt D25820K 5KLS</div>
-                        <div class="equipment-item">Cincelador DeWalt D25831K 6KLS</div>
-                        <div class="equipment-item">Demoledor electroneumático DeWalt D25901K de 10 KLS</div>
-                        <div class="equipment-item">Demoledor electroneumático DeWalt D25960K de 16 KLS</div>
-                        <div class="equipment-item">Demoledor electroneumático DeWalt D25980K de 30 KLS</div>
-                        <div class="equipment-item">Demoledor electroneumático Makita HM1307C de 15 KLS</div>
-                        <div class="equipment-item">Demoledor electroneumático Makita HM0870C de 5 KLS</div>
-                        <div class="equipment-item">Perforadora YT27 con émbolo y pato lubricador</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">SOLDADORA ELECTRONICA MONOFASICA KEMPI MINIARC 150</li>
+                            <li class="equipment-item">SOLDADORA ELECTRONICA TRIFASICA SOLTEC T315</li>
+                            <li class="equipment-item">EQUIPO DE OXICORTE</li>
+                            <li class="equipment-item">SOLDADORA ELECTRONICA TRIFASICA ARCWELD 250</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <!-- Bombas de Agua -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/soldadora.jpg'); background-color: white;">
-                        <h3>Soldadura</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Soldadora electrónica monofásica Kempi Miniarc 150</div>
-                        <div class="equipment-item">Soldadora electrónica monofásica Soltec T215</div>
-                        <div class="equipment-item">Soldadora electrónica trifásica Soltec T315</div>
-                        <div class="equipment-item">Soldadora electrónica trifásica Arcweld 250</div>
-                        <div class="equipment-item">Motosoldadora diesel Denyo DAW500S</div>
-                        <div class="equipment-item">Termo eléctrico para soldadura</div>
-                        <div class="equipment-item">Equipo de oxicorte, 1 tubo gas de 45 KLS, 1 tubo de oxígeno</div>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/bombaagua.webp'); background-color: white;">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
                         <h3>Bombas de Agua</h3>
-                        <button class="expand-btn">+</button>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Bomba sumergible monofásica 2"</div>
-                        <div class="equipment-item">Bomba sumergible monofásica 3"</div>
-                        <div class="equipment-item">Bomba sumergible trifásica de 3" Meudy</div>
-                        <div class="equipment-item">Bomba sumergible de 4" Fypumps</div>
-                        <div class="equipment-item">Bomba sumergible de 6" Fypumps</div>
-                        <div class="equipment-item">Motobomba bencinera 3"</div>
-                        <div class="equipment-item">Motobomba diesel Koshin de 4"</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">MOTOBOMBAS SUMERGIBLES DIESEL DE 2" A 6"</li>
+                            <li class="equipment-item">BOMBA SUMERGIBLE MONOFASICA 2"</li>
+                            <li class="equipment-item">MOTOBOMBA DIESEL KOSHIN DE 4"</li>
+                            <li class="equipment-item">BOMBA SUMERGIBLE TRIFASICA DE 6"</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <!-- Termofusionadoras -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/equipohormigon.jpg'); background-color: white;">
-                        <h3>Equipos de Hormigón</h3>
-                        <button class="expand-btn">+</button>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Termofusionadoras</h3>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Betonera eléctrica 150 LTS</div>
-                        <div class="equipment-item">Betonera eléctrica 350 LTS</div>
-                        <div class="equipment-item">Betonera eléctrica 400 LTS</div>
-                        <div class="equipment-item">Betonera bencinera 400 LTS</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">TERMOFUSIONADORA 90 - 315MM</li>
+                            <li class="equipment-item">TERMOFUSIONADORA 50 - 160MM</li>
+                            <li class="equipment-item">ELECTROFUSIONADORA 20-1200MM</li>
+                            <li class="equipment-item">ELECTROFUSIONADORA 20 - 315MM</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <!-- Sondas de Alta Frecuencia -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/cortadora.webp'); background-color: white;">
-                        <h3>Corte y Termofusión</h3>
-                        <button class="expand-btn">+</button>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h3>Sondas de Alta Frecuencia</h3>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Cortadora pavimento Husqvarna FS309</div>
-                        <div class="equipment-item">Cortadora pavimento Husqvarna FS400</div>
-                        <div class="equipment-item">Tronzadora DeWalt D28720K de 14"</div>
-                        <div class="equipment-item">Disco de corte 14"</div>
-                        <div class="equipment-item">Termofusionadora 160MM</div>
-                        <div class="equipment-item">Termofusionadora 315MM</div>
-                        <div class="equipment-item">Electrofusionadora 20-315MM</div>
-                        <div class="equipment-item">Electrofusionadora 20-1200MM</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">SONDA HF DE 38 MM MARCA LIEVERS HOLLAND</li>
+                            <li class="equipment-item">SONDA HF DE 45MM MARCA LIEVERS HOLLAND</li>
+                            <li class="equipment-item">SONDA HF DE 60MM MARCA LIEVERS HOLLAND</li>
+                            <li class="equipment-item">UNIDAD MOTRIZ CON SONDA ALTA FRECUENCIA MARCA DINGO W</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <!-- Demoledores -->
                 <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/herramientaselectricas.webp'); background-color: white;">
-                        <h3>Herramientas Eléctricas</h3>
-                        <button class="expand-btn">+</button>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>Demoledores Electroneumáticos</h3>
                     </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Esmeril angular de 4 1/2"</div>
-                        <div class="equipment-item">Esmeril angular de 7"</div>
-                        <div class="equipment-item">Esmeril recto tipo rectificador</div>
-                        <div class="equipment-item">Taladro magnético DeWalt DWE1622</div>
-                        <div class="equipment-item">Kit de pulido y aspirado</div>
-                        <div class="equipment-item">Testiguera Husqvarna DMS240</div>
-                        <div class="equipment-item">Soplador eléctrico 600 watts</div>
-                        <div class="equipment-item">Tablero eléctrico monofásico</div>
-                        <div class="equipment-item">Tablero eléctrico trifásico</div>
-                        <div class="equipment-item">Extensión eléctrica industrial de 20 metros por 16 AMP</div>
-                        <div class="equipment-item">Peinetas para cableado eléctrico</div>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/perforacion.png'); background-color: white;">
-                        <h3>Perforación de Suelos</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Sonda HF de 38 mm marca Lievers Holland</div>
-                        <div class="equipment-item">Sonda HF de 45mm marca Lievers Holland</div>
-                        <div class="equipment-item">Sonda HF de 52 mm marca Lievers Holland</div>
-                        <div class="equipment-item">Sonda HF de 60mm marca Lievers Holland</div>
-                        <div class="equipment-item">Sonda vibradora HF1</div>
-                        <div class="equipment-item">Unidad motriz con sonda alta frecuencia marca Dingo W</div>
-                        <div class="equipment-item">Unidad motriz bencinera con sonda vibratoria de 28mm</div>
-                        <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 38mm</div>
-                        <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 45mm</div>
-                        <div class="equipment-item">Unidad motriz eléctrica con sonda vibratoria de 60mm</div>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/hidrolavadora.webp'); background-color: white;">
-                        <h3>Limpieza y Lavado</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Hidrolavadora autónoma bencinera</div>
-                        <div class="equipment-item">Hidrolavadora eléctrica marca Fasa modelo Ocean</div>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header" style="background-image: url('galeria/bomag.jpg'); background-color: white;">
-                        <h3>Accesorios y Repuestos</h3>
-                        <button class="expand-btn">+</button>
-                    </div>
-                    <div class="equipment-list">
-                        <div class="equipment-item">Extensión de rodillo Bomag BMP8500</div>
-                        <div class="equipment-item">Cuña para demoledor de 1 1/8"</div>
-                        <div class="equipment-item">Broca de desbaste</div>
-                        <div class="equipment-item">Manguera espirilada de 3"</div>
-                        <div class="equipment-item">Manguera espirilada de 4"</div>
+                    <div class="category-body">
+                        <ul class="equipment-list">
+                            <li class="equipment-item">DEMOLEDOR ELECTRONEUMATICO DEWALT D25901K DE 10 KLS</li>
+                            <li class="equipment-item">DEMOLEDOR ELECTRONEUMATICO DEWALT D25960K DE 16 KLS</li>
+                            <li class="equipment-item">DEMOLEDOR ELECTRONEUMATICO DEWALT D25980K DE 30 KLS</li>
+                            <li class="equipment-item">DEMOLEDOR ELECTRONEUMATICO MAKITA HM1307C DE 15 KLS</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1012,7 +1055,7 @@
                                 <h3>Dirección</h3>
                                 <p>
                                     <a href="https://maps.app.goo.gl/KQEemvMouWJrithe8" target="_blank" class="contact-link">
-                                        Oscar Castro 01413, Illapel, Chile
+                                        Oscar Castro 01433, Illapel, Chile
                                     </a>
                                 </p>
                             </div>
@@ -1035,9 +1078,6 @@
                                 <p>
                                     <a href="mailto:pedrosuazobarraza@sucor.cl" class="contact-link">
                                         pedrosuazobarraza@sucor.cl
-                                    </a><br>
-                                    <a href="mailto:pablacortesdiaz@sucor.cl" class="contact-link">
-                                        pablacortesdiaz@sucor.cl
                                     </a>
                                 </p>
                             </div>
@@ -1048,12 +1088,11 @@
                                 <h3>Horario de Atención</h3>
                                 <p>Lunes a Viernes: 8:00 - 19:00 hrs<br>Sábados: 9:00 - 14:00 hrs</p>
                             </div>
-                            
                         </div>
                         <div class="social-links" style="margin-top: 20px; display: flex; justify-content: flex-start; padding-left: 0;">
-    <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank" style="font-size: 24px; width: 55px; height: 55px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-    <a href="https://wa.me/56984370799" target="_blank" style="font-size: 24px; width: 55px; height: 55px;"><i class="fab fa-whatsapp"></i></a>
-</div>
+                            <a href="https://www.instagram.com/sucor.cl?igsh=ZjV6aW5qbzd4MGp2" target="_blank" style="font-size: 24px; width: 55px; height: 55px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/56984370799" target="_blank" style="font-size: 24px; width: 55px; height: 55px;"><i class="fab fa-whatsapp"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1073,10 +1112,9 @@
     </footer>
 
     <script>
+        // Menú móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-        const viewMoreBtn = document.getElementById('viewMoreBtn');
-        const additionalCategories = document.getElementById('additionalCategories');
         
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
@@ -1090,6 +1128,7 @@
             });
         });
         
+        // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1102,6 +1141,7 @@
             });
         });
         
+        // Formulario de contacto
         const contactForm = document.getElementById('contactForm');
         const replyToField = document.getElementById('_replyto');
         const correoField = document.getElementById('correo');
@@ -1116,57 +1156,112 @@
             replyToField.value = correoField.value; 
         });
 
-        // Función para mostrar/ocultar categorías adicionales
-        if (viewMoreBtn && additionalCategories) {
+        // Slider de equipos destacados
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.featured-slide');
+        const controls = document.querySelectorAll('.slider-control');
+        
+        function showSlide(index) {
+            // Ocultar todas las slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Quitar clase active de todos los controles
+            controls.forEach(control => {
+                control.classList.remove('active');
+            });
+            
+            // Mostrar la slide actual
+            slides[index].classList.add('active');
+            controls[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        // Añadir eventos a los controles del slider
+        controls.forEach((control, index) => {
+            control.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Cambio automático de slides cada 5 segundos
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % slides.length;
+            showSlide(nextSlide);
+        }, 5000);
+        
+        // Filtros de categorías
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categoryCards = document.querySelectorAll('.category-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Quitar clase active de todos los botones
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                
+                // Mostrar/ocultar categorías según el filtro
+                categoryCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Si el filtro es para una categoría específica, mostrar ese slide en el carousel
+                if (category !== 'all') {
+                    const slideIndex = Array.from(slides).findIndex(slide => slide.getAttribute('data-category') === category);
+                    if (slideIndex !== -1) {
+                        showSlide(slideIndex);
+                    }
+                }
+            });
+        });
+        
+        // Botón "Ver todas las categorías"
+        const viewMoreBtn = document.getElementById('viewMoreBtn');
+        const allCategories = document.getElementById('allCategories');
+        
+        if (viewMoreBtn && allCategories) {
             viewMoreBtn.addEventListener('click', function() {
-                additionalCategories.classList.toggle('hidden');
+                allCategories.classList.toggle('hidden');
                 viewMoreBtn.classList.toggle('showing');
                 
-                if (additionalCategories.classList.contains('hidden')) {
-                    // Desplazarse al botón después de ocultar
+                // Desplazarse a las categorías si se están mostrando
+                if (!allCategories.classList.contains('hidden')) {
                     setTimeout(() => {
-                        viewMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
-                } else {
-                    // Desplazarse a las categorías mostradas
-                    setTimeout(() => {
-                        additionalCategories.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        allCategories.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 300);
                 }
             });
         }
-
-        document.querySelectorAll('.expand-btn, .category-header').forEach(element => {
-            element.addEventListener('click', function(event) {
-                if(event.target.classList.contains('expand-btn')) {
-                    event.stopPropagation();
-                }
+        
+        // Botones "Ver Equipos" en cada categoría
+        document.querySelectorAll('.view-equipment-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const categoryCard = this.closest('.category-card');
+                const equipmentList = categoryCard.querySelector('.equipment-list');
+                const categoryName = categoryCard.querySelector('h3').textContent;
                 
-                let equipmentList;
-                let expandBtn;
-                
-                if(event.target.classList.contains('expand-btn')) {
-                    equipmentList = event.target.parentElement.nextElementSibling;
-                    expandBtn = event.target;
-                } 
-                else {
-                    const categoryCard = event.target.closest('.category-card');
-                    equipmentList = categoryCard.querySelector('.equipment-list');
-                    expandBtn = categoryCard.querySelector('.expand-btn');
-                }
-                
-                equipmentList.classList.toggle('expanded');
-                
-                if (equipmentList.classList.contains('expanded')) {
-                    expandBtn.textContent = '-';
-                    expandBtn.setAttribute('aria-expanded', 'true');
+                // Alternar la altura máxima para mostrar/ocultar la lista completa
+                if (equipmentList.style.maxHeight && equipmentList.style.maxHeight !== '180px') {
+                    equipmentList.style.maxHeight = '180px';
+                    this.innerHTML = '<i class="fas fa-eye"></i> Ver Equipos';
                 } else {
-                    expandBtn.textContent = '+';
-                    expandBtn.setAttribute('aria-expanded', 'false');
-                    
+                    equipmentList.style.maxHeight = equipmentList.scrollHeight + 'px';
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i> Ocultar Equipos';
                 }
             });
         });
+        
+        // Inicializar el slider
+        showSlide(0);
     </script>
 </body>
 </html>
